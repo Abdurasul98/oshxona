@@ -9,7 +9,7 @@ def main():
         print("""
         1. Register
         2. Login
-        3.  exit
+        3. Exit
         """)
         choice = input("choice: ")
 
@@ -34,43 +34,50 @@ def main():
 
 
 def admin():
-    print("""
-    1. Show orders
-    2. Delete orders
-    3. Show users
-    4. Total place
-    5. Add products
-    6. Delete products
-    7. Back main
-    """)
+    while True:
+        print("""
+        1. Show orders
+        2. Delete orders
+        3. Show users
+        4. Total place
+        5. Add products
+        6. Delete products
+        7. Back main
+        """)
 
 
-    choice = input("choice: ")
+        choice = input("choice: ")
 
-    if choice == "1":
-        show_orders()
+        if choice == "1":
+            show_orders()
 
-    elif choice == "2":
-        delete_orders()
 
-    elif choice == "3":
-        show_users()
+        elif choice == "2":
+            delete_orders()
 
-    elif choice == "4":
-        total_place()
 
-    elif choice == "5":
-        add_products()
+        elif choice == "3":
+            show_users()
 
-    elif choice == "6":
-        delete_products()
 
-    elif choice == "7":
-        return main()
+        elif choice == "4":
+            total_place()
 
-    else:
-        print("invalid choice")
-        return admin()
+
+        elif choice == "5":
+            add_products()
+
+
+        elif choice == "6":
+            delete_products()
+
+
+        elif choice == "7":
+            return main()
+
+        else:
+            print("invalid choice")
+            return admin()
 
 
 
