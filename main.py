@@ -1,4 +1,4 @@
-from apps.admin.admin_views import  delete_orders, show_users, total_place
+from apps.admin.admin_views import delete_orders, show_users, total_place, add_products, delete_products
 from apps.auth.views import register, login, logout
 from apps.orders.order_controller import show_orders
 from apps.user.user_views import add_orders
@@ -42,6 +42,9 @@ def admin():
     2. Delete orders
     3. Show users
     4. Total place
+    5. Add products
+    6. Delete products
+    7. Back main
     """)
 
     choice = input("choice: ")
@@ -57,6 +60,15 @@ def admin():
 
     elif choice == "4":
         total_place()
+
+    elif choice == "5":
+        add_products()
+
+    elif choice == "6":
+        delete_products()
+
+    elif choice == "7":
+        return main()
 
     else:
         print("invalid choice")
