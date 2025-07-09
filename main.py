@@ -9,8 +9,7 @@ def main():
         print("""
         1. Register
         2. Login
-        3. Logout
-        4. exit
+        3.  exit
         """)
         choice = input("choice: ")
 
@@ -27,13 +26,11 @@ def main():
                 print("wrong")
 
         elif choice =="3":
-            logout()
-
-        elif choice =="4":
             break
 
         else:
             print("invalid choice")
+
 
 
 def admin():
@@ -46,6 +43,7 @@ def admin():
     6. Delete products
     7. Back main
     """)
+
 
     choice = input("choice: ")
 
@@ -75,10 +73,12 @@ def admin():
         return admin()
 
 
+
 def user():
     print("""
     1. Add orders
     2. Show orders
+    3. Logout
     """)
 
     choice = input("choice: ")
@@ -89,9 +89,13 @@ def user():
     elif choice == "2":
         show_orders()
 
+    elif choice == "3":
+        logout()
+        return main()
+
     else:
         print("invalid choice")
-        return user()
+    return user()
 
 
 
