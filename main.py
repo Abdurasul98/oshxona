@@ -4,44 +4,43 @@ from apps.orders.order_controller import show_orders
 from apps.user.user_views import add_orders
 
 
-def main():
-    while True:
-        print("""
-        1. Register
-        2. Login
-        3. Logout
-        4. exit
-        """)
-        choice = input("choice: ")
-
-        if choice == "1":
-            register()
-
-        elif choice =="2":
-            role = login()
-            if role == "admin":
-                admin()
-            elif role == "user":
-                user()
-            else:
-                print("wrong")
-
-        elif choice =="3":
-            logout()
-
-        elif choice =="4":
-            break
-
+def auth_menu():
+    print("""
+    1. Register
+    2. Login
+    3. Exit
+    """)
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        if register():
+            print("Successfully registered")
         else:
-            print("invalid choice")
+            print("Something went wrong")
+    elif choice == "2":
+        result = login()
+        if result == "admin":
+            print("Welcome admin")
+            return admin_menu()
+        elif result == "user":
+            print("Welcome user")
+            return user_menu()
+        else:
+            return login()
+    elif choice == "3":
+        print("Good bye")
+        return
+    else:
+        print("Invalid choice")
+    return auth_menu()
 
 
-def admin():
+def admin_menu():
     print("""
     1. Show orders
     2. Delete orders
     3. Show users
     4. Total place
+    5. Logout
     """)
 
     choice = input("choice: ")
@@ -58,15 +57,20 @@ def admin():
     elif choice == "4":
         total_place()
 
+    elif choice == "5":
+        logout()
+        return auth_menu()
+
     else:
         print("invalid choice")
-        return admin()
+    return admin_menu()
 
 
-def user():
+def user_menu():
     print("""
     1. Add orders
     2. Show orders
+    3. Logout
     """)
 
     choice = input("choice: ")
@@ -77,11 +81,15 @@ def user():
     elif choice == "2":
         show_orders()
 
+    elif choice == "3":
+        logout()
+        return auth_menu()
+
     else:
         print("invalid choice")
-        return user()
+    return user_menu()
 
 
 
 if __name__ == "__main__":
-    main()
+    auth_menu()
