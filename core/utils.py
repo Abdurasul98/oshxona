@@ -6,3 +6,4 @@ def get_next_id(filename: str):
     if all_rows:
         return int(all_rows[-1][0]) + 1
     return 1
+
