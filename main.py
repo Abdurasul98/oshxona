@@ -1,3 +1,9 @@
+from apps.admin.admin_views import  delete_orders, show_users, total_place
+from apps.auth.views import register, login, logout
+from apps.orders.order_controller import show_orders
+from apps.user.user_views import add_orders
+
+
 def main():
     while True:
         print("""
@@ -9,10 +15,10 @@ def main():
         choice = input("choice: ")
 
         if choice == "1":
-            pass
+            register()
 
         elif choice =="2":
-            role = ""
+            role = login()
             if role == "admin":
                 admin()
             elif role == "user":
@@ -21,7 +27,7 @@ def main():
                 print("wrong")
 
         elif choice =="3":
-            pass
+            logout()
 
         elif choice =="4":
             break
@@ -41,16 +47,16 @@ def admin():
     choice = input("choice: ")
 
     if choice == "1":
-        pass
+        show_orders()
 
     elif choice == "2":
-        pass
+        delete_orders()
 
     elif choice == "3":
-        pass
+        show_users()
 
     elif choice == "4":
-        pass
+        total_place()
 
     else:
         print("invalid choice")
@@ -66,10 +72,10 @@ def user():
     choice = input("choice: ")
 
     if choice == "1":
-        pass
+        add_orders()
 
     elif choice == "2":
-        pass
+        show_orders()
 
     else:
         print("invalid choice")
