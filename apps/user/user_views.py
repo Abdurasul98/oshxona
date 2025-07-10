@@ -12,5 +12,11 @@ def add_orders():
     phone = input("Enter phone number: ")
     created_at = datetime.now()
 
+
     FileManager("orders").append(row=[product_id, full_name, product_name, quantity, phone, created_at])
     print("New order is added")
+
+
+
+def show_product():
+    pass

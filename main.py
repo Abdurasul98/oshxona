@@ -37,12 +37,12 @@ def admin():
     while True:
         print("""
         1. Show orders
-        2. Delete orders
+        2. Delete orders   
         3. Show users
         4. Total place
         5. Add products
         6. Delete products
-        7. Back main
+        7. Logout
         """)
 
 
@@ -73,6 +73,7 @@ def admin():
 
 
         elif choice == "7":
+            logout()
             return main()
 
         else:
@@ -85,7 +86,8 @@ def user():
     print("""
     1. Add orders
     2. Show orders
-    3. Logout
+    3. Show product
+    4. Logout
     """)
 
     choice = input("choice: ")
