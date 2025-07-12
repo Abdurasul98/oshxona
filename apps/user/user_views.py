@@ -3,7 +3,19 @@ from datetime import datetime
 from core.file_manager import FileManager
 from core.utils import get_next_id
 
-from apps.orders.order_controller import orders_time
+def time_dec(func):
+    def wrapper(*args, **kwargs):
+        time_now = datetime.now()
+        hour = time_now.hour
+        if hour < 20:
+            print("Zakaz berishingiz mumkin")
+            return func(*args, **kwargs)
+        else:
+            print("Abet vaqti tugadi, zakaz qabul qilinmaydi")
+            return None
+    return wrapper
+
+@time_dec
 def add_orders():
     product_id = get_next_id(filename="orders")
     full_name = input("Enter full name: ")
@@ -11,13 +23,12 @@ def add_orders():
     quantity = int(input("Enter quantity: "))
     phone = input("Enter phone number: ")
     created_at = datetime.now()
-    order_time = input("Enter oreder time for example (HH:MM): ")
-    orders_time(user_id=product_id,order_time=order_time)
 
-    FileManager("orders").append(row=[product_id, full_name, product_name, quantity, phone, created_at,order_time])
+    FileManager("orders").append(row=[product_id, full_name, product_name, quantity, phone, created_at])
     print("New order is added")
 
 
-
 def show_product():
-    pass
+    products = FileManager("products").read()
+    for product in products:
+        print(product)
