@@ -50,11 +50,11 @@ def add_products():
             print("Iltimos, musbat son kiriting.")
 
 
-    order_id = get_next_id("orders")
+    order_id = get_next_id("products")
     order_time = datetime.now()
     data = [order_id,product,quantity,order_time]
 
-    FileManager("orders").append(data)
+    FileManager("products").append(data)
     print("Added product")
 
 def delete_products():
