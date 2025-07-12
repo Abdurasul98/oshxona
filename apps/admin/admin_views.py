@@ -10,6 +10,9 @@ def delete_orders():
 
     reader = FileManager("orders").read()
     for i in reader:
+        if len(i) <5 or i[0] == "ID":
+            continue
+
         if i[4].strip() != phone_number:
             new_order.append(i)
         else:
@@ -34,6 +37,8 @@ def total_place():
     reader = FileManager("orders").read()
 
     for i in reader:
+        if i[0] == "ID":
+            continue
         busy = busy + int(i[3])
     result = total - busy
     print(f"{result}ta bosh joy")
@@ -78,3 +83,9 @@ def delete_products():
         print("Deleted order")
     else:
         print("Not found this order")
+
+
+def show_products():
+    reader = FileManager("products").read()
+    for i in reader:
+        print(i)
